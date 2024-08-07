@@ -1,15 +1,25 @@
+document.addEventListener('DOMContentLoaded', function() { 
 // add basic event listener to make sure that DOM is run after the HTML has loaded.
-
-
 // constsearchButton to select the HTML element class search-button.
 // const cityName to select HTML element ID city-name.
 // const currentDate to select HTML element ID current-date.
 // const forecast. I will use querySelector and select HTML element class forecast.
 
+    const searchButton = document.querySelector('.search-button');
+    const cityName = document.getElementById('city-name');
+    const currentDate = document.getElementById('current-date');
+    const forecast = document.querySelector('.forecast');
 
-// search button event listener click function to prompt asking for city name. 
+ // search button event listener click function to prompt asking for city name. 
 // const city = prompt("Enter city name:");
 // if argument city, because that is the input, then call the getWeatherData(city) function. 
+
+    searchButton.addEventListener('click', function() {
+        const city = prompt("Enter city name:");
+        if (city) {
+            getWeatherData(city);
+        }
+    });
 
 // getWeatherData(city) {
 // const apiKey = 'dd36305ac7efbdf9bd0266889cb0b16a'  < That is the API key I got from signing up for an account. 
@@ -19,13 +29,44 @@
 // this is to make the HTTP get request to the apiUrl.
 // add a then method to make the function as an argument, which will then run when the response is recieved. 
 // parse the response as JSON.
+
+
+    function getWeatherData(city) {
+        const apiKey = 'dd36305ac7efbdf9bd0266889cb0b16a';
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+
 // need to add a .then(function(response)) to use then method for the response from the fetch request. 
 // it takes the function as an argument, which will then run when the response is recieved. 
 // check to make sure the data code is sucessful. data.cod === '200'
 // call the updateWeatherInfo(data) function. The fetched data is the argument. 
 // alert "city not found!" if response code is not 200. 
 // add a catch method for any errors in the fetch request of then method. 
-// console log the error and make alert that the data fetch request failed. Invite the user to try again later. 
+// console log the error and make alert that the data fetch request failed. Invite the user to try again later.
+
+
+        fetch(apiUrl)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.cod === '200') {
+                    updateWeatherInfo(data);
+                } else {
+                    alert('City not found!');
+                }
+            })
+            .catch(function(error) {
+                console.log('Error fetching weather data:', error);
+                alert('Failed to fetch weather data. Please try again later.');
+            });
+    }
+
+    function updateWeatherInfo(data) {
+        const city = data.city.name;
+        const forecastList = data.list;
+
+        cityName.textContent = city;
+        currentDate.textContent = new Date().toLocaleDateString();
 
 // make a updateWeatherInfo function with the data as the argument. Declare the const variables accordingly. 
 // forecast.innerHTML = '<p>5-Day Forecast</p> to set the inner HTML do show the 5-Day Forecast Header.
@@ -39,4 +80,22 @@
 // generate the HTML. create a new div element and assign it to forecastItem.
 // set the inner HTML of the forecastItem element to display the date, temperature, and description.
 // appendChild
+
+        forecast.innerHTML = '<p>5-Day Forecast</p>';
+        for (let i = 0; i < forecastList.length; i += 8) { 
+            const forecastItemData = forecastList[i];
+            const date = new Date(forecastItemData.dt * 1000).toLocaleDateString();
+            const temp = forecastItemData.main.temp;
+            const description = forecastItemData.weather[0].description;
+
+            const forecastItem = document.createElement('div');
+            forecastItem.className = 'forecast-item';
+            forecastItem.innerHTML = `<p>${date}</p>
+                                      <p>Temp: ${temp}°F</p>
+                                      <p>${description}</p>`;
+            forecast.appendChild(forecastItem);
+        }
+    }
+});
+
 

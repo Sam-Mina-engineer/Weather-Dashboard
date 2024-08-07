@@ -10,7 +10,4 @@ I went to the weather app website provided in the assignment and created an acco
 I am detailing my thought process and organization for the JavaScript in the pseudocode in the script.js file. 
 I finished pseudocoding the JavaScript, which was extremely intense. Filling it out with the actual code is just a matter of syntax and will be much easier. 
 TIME FOR A GIT PUSH!!!
-
-
-
-
+I finally finished coding the JavaScript. The app works, but I need to make it display the data in a nicer looking way. But before that there is a more serious problem. There is the way it receives the input of the city. It is confusing. I am going to hunt for a library where I can install a drop down menu to choose from. That way there will be no confusion on how to enter the city. However, before I get into that mess, I'm long due for a GIT PUSH!!!
