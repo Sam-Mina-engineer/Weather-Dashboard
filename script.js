@@ -5,21 +5,40 @@ document.addEventListener('DOMContentLoaded', function() {
 // const currentDate to select HTML element ID current-date.
 // const forecast. I will use querySelector and select HTML element class forecast.
 
-    const searchButton = document.querySelector('.search-button');
-    const cityName = document.getElementById('city-name');
-    const currentDate = document.getElementById('current-date');
-    const forecast = document.querySelector('.forecast');
+const cityDropdown = $('#city-dropdown');
+const cityName = document.getElementById('city-name');
+const currentDate = document.getElementById('current-date');
+const forecast = document.querySelector('.forecast');
 
  // search button event listener click function to prompt asking for city name. 
 // const city = prompt("Enter city name:");
 // if argument city, because that is the input, then call the getWeatherData(city) function. 
+// I am replacing this with the JQuery and the cities.JSON public repo that I cloned into my directory. 
 
-    searchButton.addEventListener('click', function() {
-        const city = prompt("Enter city name:");
-        if (city) {
-            getWeatherData(city);
+ // Load cities from the JSON file
+
+ $.getJSON('city.list.json', function(cities) {
+    cities.forEach(function(city) {
+        if (city.name && city.country) {
+            const displayName = city.name + ', ' + city.country;
+            cityDropdown.append(
+                $('<option></option>')
+                    .val(city.name + ',' + city.country)
+                    .text(displayName)
+            );
         }
     });
+});
+
+cityDropdown.change(function() {
+    const selectedCity = $(this).val();
+    if (selectedCity) {
+        getWeatherData(selectedCity);
+    }
+});
+
+
+//I am replacing the search button with the menu. 
 
 // getWeatherData(city) {
 // const apiKey = 'dd36305ac7efbdf9bd0266889cb0b16a'  < That is the API key I got from signing up for an account. 
@@ -35,6 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const apiKey = 'dd36305ac7efbdf9bd0266889cb0b16a';
         const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
 
+    console.log("API URL:", apiUrl); // Log the API URL to check correctness
+        
 // need to add a .then(function(response)) to use then method for the response from the fetch request. 
 // it takes the function as an argument, which will then run when the response is recieved. 
 // check to make sure the data code is sucessful. data.cod === '200'
@@ -44,29 +65,30 @@ document.addEventListener('DOMContentLoaded', function() {
 // console log the error and make alert that the data fetch request failed. Invite the user to try again later.
 
 
-        fetch(apiUrl)
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                if (data.cod === '200') {
-                    updateWeatherInfo(data);
-                } else {
-                    alert('City not found!');
-                }
-            })
-            .catch(function(error) {
-                console.log('Error fetching weather data:', error);
-                alert('Failed to fetch weather data. Please try again later.');
-            });
+fetch(apiUrl)
+.then(function(response) {
+    return response.json();
+})
+.then(function(data) {
+    if (data.cod === '200') {
+        updateWeatherInfo(data);
+    } else {
+        alert('City not found!');
     }
+})
+.catch(function(error) {
+    console.log('Error fetching weather data:', error);
+    alert('Failed to fetch weather data. Please try again later.');
+});
+}
 
-    function updateWeatherInfo(data) {
-        const city = data.city.name;
-        const forecastList = data.list;
 
-        cityName.textContent = city;
-        currentDate.textContent = new Date().toLocaleDateString();
+function updateWeatherInfo(data) {
+    const city = data.city.name;
+    const forecastList = data.list;
+
+    cityName.textContent = city;
+    currentDate.textContent = new Date().toLocaleDateString();
 
 // make a updateWeatherInfo function with the data as the argument. Declare the const variables accordingly. 
 // forecast.innerHTML = '<p>5-Day Forecast</p> to set the inner HTML do show the 5-Day Forecast Header.

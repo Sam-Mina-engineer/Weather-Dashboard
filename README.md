@@ -11,3 +11,8 @@ I am detailing my thought process and organization for the JavaScript in the pse
 I finished pseudocoding the JavaScript, which was extremely intense. Filling it out with the actual code is just a matter of syntax and will be much easier. 
 TIME FOR A GIT PUSH!!!
 I finally finished coding the JavaScript. The app works, but I need to make it display the data in a nicer looking way. But before that there is a more serious problem. There is the way it receives the input of the city. It is confusing. I am going to hunt for a library where I can install a drop down menu to choose from. That way there will be no confusion on how to enter the city. However, before I get into that mess, I'm long due for a GIT PUSH!!!
+To make my drop down menu, I found a public repository of the cities and I cloned it to my directory. I am now integrating it into my code using JQuery. 
+I got the coding done, but the drop down menu is not working because of CORS restrictions. I am currently exploring my options for getting around those restrictions. 
+I am running VS Code as a live server. I also swittched repos for the cities list and I downloaded a city list from the Open Weather website and I put it in my directory. 
+I adjusted the code accordingly. 
+Time for a GIT PUSH!

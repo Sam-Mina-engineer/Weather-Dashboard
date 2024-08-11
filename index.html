@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam Mina's Weather Hub</title>
+    <title>Weather Dashboard</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
-        <img src="images/icon.jpg" alt="Icon" class="icon">
-        Sam Mina's Weather Hub
+        <h1>Weather Dashboard</h1>
     </header>
     <section class="selection-bar">
-        Select City
-        <button class="search-button">Search</button>
+        <label for="city-dropdown">Select City:</label>
+        <select id="city-dropdown" class="city-dropdown">
+            <option value="" disabled selected>Select a city</option>
+        </select>
     </section>
     <section class="weather-info">
         <div class="current-city">
@@ -24,6 +25,7 @@
             <p>5-Day Forecast</p>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
