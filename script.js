@@ -17,18 +17,27 @@ const forecast = document.querySelector('.forecast');
 
  // Load cities from the JSON file
 
- $.getJSON('city.list.json', function(cities) {
-    cities.forEach(function(city) {
-        if (city.name && city.country) {
-            const displayName = city.name + ', ' + city.country;
-            cityDropdown.append(
-                $('<option></option>')
-                    .val(city.name + ',' + city.country)
-                    .text(displayName)
-            );
-        }
-    });
+ $.ajax({
+    url: 'city.list.json.gz',
+    type: 'GET',
+    dataType: 'json',
+    success: function(cities) {
+        cities.forEach(function(city) {
+            if (city.name && city.country) {
+                const displayName = city.name + ', ' + city.country;
+                cityDropdown.append(
+                    $('<option></option>')
+                        .val(city.name + ',' + city.country)
+                        .text(displayName)
+                );
+            }
+        });
+    },
+    error: function(xhr, status, error) {
+        console.log('Error loading city list:', error);
+    }
 });
+
 
 cityDropdown.change(function() {
     const selectedCity = $(this).val();

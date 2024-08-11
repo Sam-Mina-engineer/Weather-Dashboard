@@ -17,4 +17,4 @@ I am running VS Code as a live server. I also swittched repos for the cities lis
 I adjusted the code accordingly. 
 Time for a GIT PUSH!
 I experimented changing the name of the dashboard to just Weather Dashboard and removing the icon to see if it will look more professional. I don't like it. I will change it back. 
-
+I am running into performance issues. I am therefore changing my cities directory to a compressed archive directory and seeing if that will enhance performance. 
