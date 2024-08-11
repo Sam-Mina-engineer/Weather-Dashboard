@@ -5,49 +5,32 @@ document.addEventListener('DOMContentLoaded', function() {
 // const currentDate to select HTML element ID current-date.
 // const forecast. I will use querySelector and select HTML element class forecast.
 
-const cityDropdown = $('#city-dropdown');
-const cityName = document.getElementById('city-name');
-const currentDate = document.getElementById('current-date');
-const forecast = document.querySelector('.forecast');
+    const searchButton = document.getElementById('search-button');
+    const cityInput = document.getElementById('city-input');
+    const cityName = document.getElementById('city-name');
+    const currentDate = document.getElementById('current-date');
+    const forecast = document.querySelector('.forecast');
 
  // search button event listener click function to prompt asking for city name. 
 // const city = prompt("Enter city name:");
 // if argument city, because that is the input, then call the getWeatherData(city) function. 
 // I am replacing this with the JQuery and the cities.JSON public repo that I cloned into my directory. 
 
- // Load cities from the JSON file
+ // Load cities from the JSON file. UPDATE: I am no longer doing this.
 
- $.ajax({
-    url: 'city.list.json.gz',
-    type: 'GET',
-    dataType: 'json',
-    success: function(cities) {
-        cities.forEach(function(city) {
-            if (city.name && city.country) {
-                const displayName = city.name + ', ' + city.country;
-                cityDropdown.append(
-                    $('<option></option>')
-                        .val(city.name + ',' + city.country)
-                        .text(displayName)
-                );
-            }
-        });
-    },
-    error: function(xhr, status, error) {
-        console.log('Error loading city list:', error);
+ searchButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    const city = cityInput.value.trim();
+    if (city) {
+        getWeatherData(city);
+    } else {
+        alert('Please enter a city, state, and country.');
     }
 });
 
 
-cityDropdown.change(function() {
-    const selectedCity = $(this).val();
-    if (selectedCity) {
-        getWeatherData(selectedCity);
-    }
-});
 
-
-//I am replacing the search button with the menu. 
+//I am replacing the search button with the menu. UPDATE: I am no longer doing this. 
 
 // getWeatherData(city) {
 // const apiKey = 'dd36305ac7efbdf9bd0266889cb0b16a'  < That is the API key I got from signing up for an account. 

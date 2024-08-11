@@ -12,10 +12,9 @@
         <h1>Sam Mina's Weather Hub</h1>
     </header>
     <section class="selection-bar">
-        <label for="city-dropdown">Select City:</label>
-        <select id="city-dropdown" class="city-dropdown">
-            <option value="" disabled selected>Select a city</option>
-        </select>
+        <label for="city-input">Enter City, State, and Country:</label>
+        <input type="text" id="city-input" class="city-input" placeholder="e.g., Nashville, TN, USA">
+        <button id="search-button" class="search-button">Search</button>
     </section>
     <section class="weather-info">
         <div class="current-city">
@@ -26,7 +25,6 @@
             <p>5-Day Forecast</p>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
