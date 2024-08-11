@@ -17,12 +17,12 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.header .Icon {
+.header .icon {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    flex-shrink: 0;
 }
-
 
 .selection-bar {
     background-color: green;
@@ -36,12 +36,26 @@ body {
     gap: 10px;
 }
 
-.city-dropdown {
+.city-input {
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
     border: 2px solid green;
+    width: 300px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid green;
+    background-color: white;
+    color: green;
     cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: lightgreen;
 }
 
 .weather-info {
@@ -74,7 +88,12 @@ body {
         padding: 15px;
     }
 
-    .city-dropdown {
+    .city-input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .search-button {
         font-size: 14px;
         padding: 8px;
     }
@@ -104,7 +123,12 @@ body {
         padding: 10px;
     }
 
-    .city-dropdown {
+    .city-input {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .search-button {
         font-size: 12px;
         padding: 6px;
     }
