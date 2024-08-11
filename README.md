@@ -16,3 +16,5 @@ I got the coding done, but the drop down menu is not working because of CORS res
 I am running VS Code as a live server. I also swittched repos for the cities list and I downloaded a city list from the Open Weather website and I put it in my directory. 
 I adjusted the code accordingly. 
 Time for a GIT PUSH!
+I experimented changing the name of the dashboard to just Weather Dashboard and removing the icon to see if it will look more professional. I don't like it. I will change it back. 
+
