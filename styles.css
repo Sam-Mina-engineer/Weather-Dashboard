@@ -77,6 +77,31 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.previous-cities {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.city-button {
+    padding: 10px 15px;
+    font-size: 14px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+.city-button:hover {
+    background-color: darkgreen;
+}
+
+
 @media (max-width: 768px) {
     .header {
         font-size: 24px;

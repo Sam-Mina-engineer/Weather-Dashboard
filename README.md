@@ -22,5 +22,6 @@ I cannot get the drop down menu to work. So, I am going to cut my losses and rev
 I added a placeholder in the HTML so that the page can tell users how to input the search. 
 Whew! What a messy and difficult project. But I am finally ready to declare it complete and git push this thing. 
 I tested it and the page works well. However, it kept refreshing and deleting my searches. So I added e as the argument to the click event listener on the search button and then added the line e.preventDefault(); below that. I tested it again and it fixed the problem. Now for Git Push. 
+I added HTML, CSS, and JS to make up for the missing weather information pointed out by the grader that I initially missed. And I also created a storage history at the bottom for previously searched cities. 
 ![Image Description](screenshot-1.png)
 ![Image Description](screenshot-2.png)

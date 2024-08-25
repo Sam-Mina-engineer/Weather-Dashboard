@@ -8,14 +8,16 @@
 </head>
 <body>
     <header class="header">
-        <img src="images/icon.jpg" alt="icon" class="icon">
+        <img src="images/icon.jpg" alt="Weather Icon" class="icon">
         <h1>Sam Mina's Weather Hub</h1>
     </header>
+
     <section class="selection-bar">
         <label for="city-input">Enter City, State, and Country:</label>
-        <input type="text" id="city-input" class="city-input" placeholder="e.g., Nashville, TN, USA">
-        <button id="search-button" class="search-button">Search</button>
+        <input type="text" id="city-input" class="city-input" placeholder="e.g., Nashville, TN, USA" aria-label="City Input">
+        <button id="search-button" class="search-button" aria-label="Search Button">Search</button>
     </section>
+
     <section class="weather-info">
         <div class="current-city">
             <p id="city-name">City Name</p>
@@ -25,6 +27,12 @@
             <p>5-Day Forecast</p>
         </div>
     </section>
+
+    <!-- Container for Previously Searched Cities -->
+    <section class="previous-cities-container">
+        <!-- This container will be dynamically populated with JavaScript -->
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
